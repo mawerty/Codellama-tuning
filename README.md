@@ -32,8 +32,8 @@ This project explores fine-tuning a CodeLlama model (specifically, `codellama/Co
 
 1.  **Clone the repo:**
     ```bash
-    git clone <your-repo-url>
-    cd <your-repo-name>
+    git clone https://github.com/mawerty/Codellama-tuning.git
+    cd Codellama-tuning
     ```
 2.  **Set up a Python environment:** (Using a virtual environment is recommended)
     ```bash
@@ -62,7 +62,6 @@ The prompt/completion pairs cover common requests use cases (GET/POST, params, h
 ## How to Use
 
 ### 1. Fine-tuning the 7B Model
-
 *   Launch Jupyter Lab or Notebook and open `train_model.ipynb`.
 *   Run the cells sequentially. The notebook handles loading the base model, preparing the data, setting up LoRA, and running the training loop.
 *   The trained LoRA adapter layers will be saved to `./requests_codellama_final` (or the path specified in the notebook). If the final save fails, the evaluation script will attempt to load from the latest checkpoint within that directory.

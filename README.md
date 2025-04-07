@@ -24,6 +24,7 @@ This project explores fine-tuning a CodeLlama model (specifically, `codellama/Co
 │   └── learning_curve.png           # Plot of training loss
 ├── README.md                   # This file
 ├── requirements.txt
+└── generate_plot.ipynb           # Used to generate loss plot
 │── evaluate_model.py       # Evaluation script (generates outputs & metrics)
 └── train_model.ipynb           # Jupyter Notebook for fine-tuning
 ```
@@ -95,7 +96,16 @@ The model clearly learned during fine-tuning, as shown by the decreasing trainin
 
 ![Learning Curve](results/learning_curve.png)
 
-The curve shows the model initially grappling with the data (steps ~1-13) before a period of rapid improvement (steps ~14-30) as it likely masters the basic `requests` syntax and common patterns. Later steps (~30-60) show slower, more fluctuating progress, suggesting refinement on nuances or perhaps hitting the limits of this small dataset. The relatively low final loss indicates a good fit to the training examples provided.
+Interpreting the Curve:
+
+    Initial State: The training begins with a relatively high loss (around 1.4), as the base CodeLlama model lacks specific knowledge of the patterns required for generating requests code snippets according to our prompts.
+
+    Rapid Initial Improvement: The loss decreases rapidly in the early stages. Given the small dataset size, the model quickly learns the most frequent code structures present (e.g., import requests, basic requests.get() usage).
+
+    Volatility/Fluctuations: Following the initial sharp decline, the loss curve exhibits considerable fluctuation. This behavior is characteristic of training on smaller datasets. Each training batch represents a larger fraction of the total data, so encountering batches with more challenging or slightly different examples (like the one causing the spike near step 28) can lead to noticeable, temporary increases in loss. The limited data diversity doesn't fully smooth out these variations.
+
+    Lower Final Loss: In the later stages, the loss converges to a significantly lower level than the starting point (generally remaining below 0.8). This indicates the model achieved a strong fit to the 100 training examples it was exposed to.
+
 
 ### Evaluation Metrics
 

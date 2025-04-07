@@ -1,0 +1,10 @@
+{
+    "model_choice": "finetuned_7b",
+    "num_examples": 25,
+    "bleu": 0.3305806089057488,
+    "cer": 0.8106658251814453,
+    "rougeL": 0.41543174881890677,
+    "chrf": 52.45098315109637,
+    "generation_time_s": 523.6479275226593,
+    "avg_generation_time_s": 20.94591710090637
+}

@@ -1,0 +1,10 @@
+{
+    "model_choice": "base_7b",
+    "num_examples": 25,
+    "bleu": 0.13499064932478164,
+    "cer": 0.7685915641106553,
+    "rougeL": 0.26278479681088285,
+    "chrf": 28.590717162436054,
+    "generation_time_s": 465.3244035243988,
+    "avg_generation_time_s": 18.612976140975952
+}

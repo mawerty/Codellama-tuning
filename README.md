@@ -25,7 +25,6 @@ This project explores fine-tuning a CodeLlama model (specifically, `codellama/Co
 ├── README.md                   # This file
 ├── requirements.txt
 │── evaluate_model.py       # Evaluation script (generates outputs & metrics)
-│── verify_completions.py   # (Optional) Checks dataset code snippets
 └── train_model.ipynb           # Jupyter Notebook for fine-tuning
 ```
 
@@ -46,7 +45,6 @@ This project explores fine-tuning a CodeLlama model (specifically, `codellama/Co
     ```bash
     pip install -r requirements.txt
     ```
-4.  **Hardware Note:** You'll need a decent GPU with enough VRAM (>= 24GB recommended) for training the 7B model and evaluating the 13B model, even with 8-bit quantization. Training/evaluation on CPU only will be extremely slow.
 
 ## The Dataset (`data/`)
 
@@ -59,7 +57,7 @@ The `train.jsonl` (for training) and `test.jsonl` (for evaluation) files contain
 }
 ```
 
-This data was created by adapting snippets from the official `requests` documentation and adding variations to cover common uses (GET/POST, params, headers, JSON, sessions, etc.). You can optionally run `scripts/verify_completions.py` to perform a basic check that the completion code runs.
+The prompt/completion pairs cover common requests use cases (GET/POST, params, headers, JSON, sessions, etc.). Initial examples were generated with AI assistance (primarily using Google Gemini) based on descriptions of desired requests functionality. Following generation, the completion code snippets were verified for basic execution using to ensure they run without immediate syntax errors or simple runtime exceptions against test endpoints.
 
 ## How to Use
 
@@ -67,7 +65,7 @@ This data was created by adapting snippets from the official `requests` document
 
 *   Launch Jupyter Lab or Notebook and open `train_model.ipynb`.
 *   Run the cells sequentially. The notebook handles loading the base model, preparing the data, setting up LoRA, and running the training loop.
-*   The trained LoRA adapter layers will be saved to `./requests_codellama_adapter_final` (or the path specified in the notebook). If the final save fails, the evaluation script will attempt to load from the latest checkpoint within that directory.
+*   The trained LoRA adapter layers will be saved to `./requests_codellama_final` (or the path specified in the notebook). If the final save fails, the evaluation script will attempt to load from the latest checkpoint within that directory.
 
 ### 2. Evaluating Models
 
